@@ -108,7 +108,33 @@
             </Table>
           </div>
         </Box>
-        <Box class="distribution-box" title="Correction distribution"></Box>
+        <Box class="distribution-box" title="Correction distribution">
+          <div class="distribution-box__text">
+            Corrections should be assigned to:
+          </div>
+          <div class="distribution-box__selection">
+            <div
+              :style="{
+                color: assigned === 'corrector' ? 'white' : 'black',
+                backgroundColor:
+                  assigned === 'corrector' ? '#3273f6' : 'transparent',
+              }"
+              class="selection"
+              @click="assignTo('corrector')">
+              One corrector
+            </div>
+            <div
+              :style="{
+                color: assigned === 'myself' ? 'white' : 'black',
+                backgroundColor:
+                  assigned === 'myself' ? '#3273f6' : 'transparent',
+              }"
+              class="selection"
+              @click="assignTo('myself')">
+              Assign to me
+            </div>
+          </div>
+        </Box>
       </template>
       <template #secondaryButton>
         <Button variant="outlined" borderRadius="1x">Cancel</Button>
@@ -159,7 +185,14 @@ export default {
         afterCheckingGradeCanBeEdited: 'yes',
         deadline: 7,
       },
+      assigned: 'corrector',
+      correctorList: [
     };
+  },
+  methods: {
+    assignTo(assignment) {
+      this.assigned = assignment;
+    },
   },
 };
 </script>
@@ -240,5 +273,31 @@ body {
 
 .settings-box {
   margin-bottom: 10px;
+}
+
+.distribution-box__text {
+  color: black;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.distribution-box__selection {
+  height: 44px;
+  background-color: var(--box-outer);
+  display: flex;
+  align-items: center;
+}
+
+.selection {
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border-radius: 60px;
+  background-color: #3273f6;
+  width: 100%;
 }
 </style>
