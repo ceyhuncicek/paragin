@@ -93,9 +93,8 @@
                           v-model="settings.deadline"
                           type="range"
                           min="0" />
-                        <img
-                          class="deadline-settings__icon"
-                          src="/star-of-life-solid.svg" />
+                        <i
+                          class="fas fa-star-of-life deadline-settings__icon"></i>
                       </div>
                       <input
                         type="number"
@@ -402,8 +401,8 @@ body {
 }
 
 .deadline-settings__icon {
-  width: 10px;
-  height: 10px;
+  margin-left: 6px;
+  font-size: 10px;
 }
 
 .deadline-settings__input {
