@@ -2,6 +2,7 @@
   <div class="page">
     <Modal title="Add new correction round">
       <template #content>
+        <Box title="Correction round settings">
           <div class="correction-round-settings">
             <Table>
               <TableBody>
@@ -106,6 +107,7 @@
               </TableBody>
             </Table>
           </div>
+        </Box>
       </template>
       <template #secondaryButton>
         <Button variant="outlined" borderRadius="1x">Cancel</Button>
@@ -123,6 +125,7 @@
 <script>
 import TableData from '../components/tables/atoms/TableData';
 import TableRow from '../components/tables/atoms/TableRow';
+import Box from '../components/boxes/molecules/Box';
 import Button from '../components/forms/atoms/Button';
 import Modal from '../components/modals/molecules/Modal';
 import Table from '../components/tables/molecules/Table';
@@ -132,11 +135,11 @@ import TableHeader from '../components/tables/atoms/TableHeader';
 import RadioInput from '../components/forms/molecules/RadioInput';
 
 export default {
-  components: { Modal, Button },
   name: 'IndexPage',
   components: {
     Modal,
     Button,
+    Box,
     Table,
     TableHeader,
     TableHeading,
