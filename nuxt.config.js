@@ -2,24 +2,28 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
+  server: {
+    port: 3006,
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "paragin",
+    title: 'paragin',
     htmlAttrs: {
-      lang: "en",
+      lang: 'en',
     },
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" },
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
       {
-        src: "https://kit.fontawesome.com/3fd562b3c9.js",
+        src: 'https://kit.fontawesome.com/3fd562b3c9.js',
         async: true,
-        crossorigin: "anonymous",
+        crossorigin: 'anonymous',
       },
     ],
   },
