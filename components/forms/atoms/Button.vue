@@ -46,7 +46,8 @@ export default {
   border: none;
   border-radius: 0px;
   padding: 8px 10.5px;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 12px;
   cursor: pointer;
 }
 
