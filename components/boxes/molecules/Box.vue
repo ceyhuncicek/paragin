@@ -20,6 +20,11 @@ export default {
 </script>
 
 <style scoped>
+.box {
+  background-color: var(--box-color);
+  padding: 20px;
+  border: 1px solid var(--box-border-outer);
+}
 .box__header {
   color: var(--text-title);
   font-weight: 400;
