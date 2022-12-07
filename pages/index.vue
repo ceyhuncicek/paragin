@@ -134,13 +134,72 @@
               Assign to me
             </div>
           </div>
+          <div class="distribution-box__info">
+            <template v-if="assigned === 'myself'">
+              Correction distribution is assigned to: Assigned to me. You don’t
+              need to specify anything else.
+            </template>
+            <template v-else-if="selectedCorrectors.length > 0">
+              Correction distribution is assigned to:
+              <span class="info-section">
+                <span
+                  v-for="(corrector, i) in selectedCorrectors"
+                  :key="i"
+                  class="info-section__selected">
+                  {{ corrector.name }},
+                </span>
+                . You don’t need to specify anything else.
+              </span>
+            </template>
+            <template v-else>
+              Please select a corrector from the list below in order to assign
+              your correction distribution.
+            </template>
+          </div>
+          <div v-if="assigned === 'corrector'" class="corrector-table">
+            <Table>
+              <TableHeading>
+                <TableHeader>Name</TableHeader>
+                <TableHeader>Role</TableHeader>
+                <TableHeader>Gorup</TableHeader>
+                <TableHeader></TableHeader>
+              </TableHeading>
+              <TableBody>
+                <TableRow
+                  v-for="(corrector, i) in selectedCorrectors.length > 0
+                    ? selectedCorrectors
+                    : correctorList"
+                  :key="i">
+                  <TableData>{{ corrector.name }}</TableData>
+                  <TableData>{{ corrector.role }}</TableData>
+                  <TableData>{{ corrector.group }}</TableData>
+                  <TableData>
+                    <Button @click="toggleSelectedCorrector(corrector)">
+                      {{
+                        isCorrectorSelected(corrector)
+                          ? 'Remove'
+                          : 'Select this corrector'
+                      }}
+                    </Button>
+                  </TableData>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
         </Box>
       </template>
       <template #secondaryButton>
         <Button variant="outlined" borderRadius="1x">Cancel</Button>
       </template>
       <template #primaryButton>
-        <Button variant="contained" color="danger" borderRadius="1x">
+        <Button
+          v-if="assigned === 'myself' || selectedCorrectors.length > 0"
+          variant="contained"
+          color="main"
+          borderRadius="1x">
+          Save this correction round
+        </Button>
+        <Button v-else variant="contained" color="danger" borderRadius="1x">
           <i class="fas fa-exclamation-triangle"></i>
           Save this correction round
         </Button>
@@ -187,11 +246,91 @@ export default {
       },
       assigned: 'corrector',
       correctorList: [
+        {
+          id: 1,
+          name: 'Van den Endelagen, C 1',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 2,
+          name: 'Van den Endelagen, C 2',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 3,
+          name: 'Van den Endelagen, C 3',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 4,
+          name: 'Van den Endelagen, C 4',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 5,
+          name: 'Van den Endelagen, C 5',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 6,
+          name: 'Van den Endelagen, C 6',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 7,
+          name: 'Van den Endelagen, C 7',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 8,
+          name: 'Van den Endelagen, C 8',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 9,
+          name: 'Van den Endelagen, C 9',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+        {
+          id: 10,
+          name: 'Van den Endelagen, C 10',
+          role: 'Test Coordinator',
+          group: 'Paragin Medewerkers Group XAAS',
+        },
+      ],
+      selectedCorrectors: [],
     };
   },
   methods: {
+    isCorrectorSelected(corrector) {
+      return this.selectedCorrectors.some(
+        (selectedCorrector) => selectedCorrector.id === corrector.id
+      );
+    },
     assignTo(assignment) {
+      if (assignment === 'myself') {
+        this.selectedCorrectors = [];
+      }
       this.assigned = assignment;
+    },
+    toggleSelectedCorrector(corrector) {
+      if (this.isCorrectorSelected(corrector)) {
+        return (this.selectedCorrectors = this.selectedCorrectors.filter(
+          (selectedCorrector) => {
+            return selectedCorrector.id !== corrector.id;
+          }
+        ));
+      }
+      return this.selectedCorrectors.push(corrector);
     },
   },
 };
@@ -299,5 +438,20 @@ body {
   border-radius: 60px;
   background-color: #3273f6;
   width: 100%;
+}
+
+.corrector-table {
+  color: black;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.distribution-box__info {
+  color: black;
+  font-size: 12px;
+}
+
+.info-section__selected {
+  font-weight: 600;
 }
 </style>
