@@ -10,9 +10,11 @@ export default {
 </script>
 <style scoped>
 .table__th {
+  color: black;
+  text-align: left;
+  padding: 10px;
   font-size: 13px;
   font-weight: 600;
-  color: #8ea4b5;
   text-transform: unset;
   border-bottom: none;
   border-top: none;
@@ -20,5 +22,9 @@ export default {
   height: 52px;
   white-space: nowrap;
   vertical-align: middle;
+}
+.table__th:last-child {
+  text-align: right;
+  padding-right: 10px;
 }
 </style>

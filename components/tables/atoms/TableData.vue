@@ -1,5 +1,5 @@
 <template>
-  <td class="table__th">
+  <td class="table__td">
     <slot />
   </td>
 </template>
@@ -9,11 +9,11 @@ export default {
 };
 </script>
 <style scoped>
-.table__th {
+.table__td {
   vertical-align: middle;
   padding: 10px;
 }
-.table__th:last-child {
+.table__td:last-child {
   text-align: right;
   padding-right: 10px;
 }
