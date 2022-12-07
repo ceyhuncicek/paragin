@@ -108,6 +108,7 @@
             </Table>
           </div>
         </Box>
+        <Box class="distribution-box" title="Correction distribution"></Box>
       </template>
       <template #secondaryButton>
         <Button variant="outlined" borderRadius="1x">Cancel</Button>
