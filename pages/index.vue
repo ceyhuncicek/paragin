@@ -2,7 +2,7 @@
   <div class="page">
     <Modal title="Add new correction round">
       <template #content>
-        <Box title="Correction round settings">
+        <Box class="settings-box" title="Correction round settings">
           <div class="correction-round-settings">
             <Table>
               <TableBody>
@@ -235,5 +235,9 @@ body {
 
 .deadline-settings__input {
   width: 98px;
+}
+
+.settings-box {
+  margin-bottom: 10px;
 }
 </style>
